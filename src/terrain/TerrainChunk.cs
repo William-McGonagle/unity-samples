@@ -13,6 +13,15 @@ public class TerrainChunk
     public float[,] chunkData;
 
     /// <summary>
+    /// Blank Constructor for the Terrain Chunk.
+    /// </summary>
+    public TerrainChunk() {
+
+        chunkData = new float[chunkWidth, chunkHeight];
+    
+    }
+
+    /// <summary>
     /// Get the height of the terrain at a specific point. 
     /// </summary>
     /// <param name="xPos">The x-position of the terrain that you are trying to sample.</param>
