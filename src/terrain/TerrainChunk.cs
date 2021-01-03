@@ -6,8 +6,8 @@ public class TerrainChunk
 {
 
     // Chunk Sizes
-    public static int width = 128;
-    public static int height = 128;
+    public static int chunkWidth = 128;
+    public static int chunkHeight = 128;
 
     // Chunk Data
     public float[,] chunkData;
@@ -94,6 +94,33 @@ public class TerrainChunk
 
         throw new System.NotImplementedException("This function has not yet been built- please use the ForcefullySetTerrainHeight function instead.");
     
+    }
+
+    public Mesh GenerateTerrainMesh() {
+
+        return GenerateTerrainMesh(1);
+    
+    }
+
+    public Mesh GenerateTerrainMesh(int division) {
+
+        Vector3[] vertices = new Vector3[(chunkWidth + 1) * (chunkHeight + 1)];
+
+        int i = 0;
+        for (int x = 0; x <= chunkWidth / division; x++)
+        {
+
+            for (int y = 0; y <= chunkHeight / division; y++)
+            {
+
+                vertices[i] = new Vector3(x * division, GetTerrainHeight(x * division, y * division), y * division);
+
+            }
+
+        }
+
+        return new Mesh();
+
     }
     
 }
