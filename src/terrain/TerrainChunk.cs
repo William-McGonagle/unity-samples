@@ -66,5 +66,34 @@ public class TerrainChunk
         return heightDelta / posDelta;
 
     }
+
+    /// <summary>
+    /// Set the height of a point on the terrain in a hard manner. The height data will NOT be equally distributed among the surrounding points- creating rough edges.
+    /// </summary>
+    /// <param name="xPos">The x-position of the point where the height needs to be set.</param>
+    /// <param name="yPos">The y-position of the point where the height needs to be set.</param>
+    /// <param name="height">The height of the terrain at the point.</param>
+    public void ForcefullySetTerrainHeight(float xPos, float yPos, float height) { 
+    
+        // Round to the Closest Grid
+        int xRealPos = (int)xPos;
+        int yRealPos = (int)yPos;
+
+        // Set the Height at the Proper Grid Position
+        chunkData[xRealPos, yRealPos] = height;
+
+    }
+
+    /// <summary>
+    /// Set the height of a point on the terrain in a soft manner. The height data will be equally distributed among the surrounding points- stopping rough edges.
+    /// </summary>
+    /// <param name="xPos">The x-position of the point where the height needs to be set.</param>
+    /// <param name="yPos">The y-position of the point where the height needs to be set.</param>
+    /// <param name="height">The height of the terrain at the point.</param>
+    public void SoftlySetTerrainHeight(float xPos, float yPos, float height) {
+
+        throw new System.NotImplementedException("This function has not yet been built- please use the ForcefullySetTerrainHeight function instead.");
+    
+    }
     
 }
