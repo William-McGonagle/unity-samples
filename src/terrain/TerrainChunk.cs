@@ -104,8 +104,10 @@ public class TerrainChunk
 
     public Mesh GenerateTerrainMesh(int division) {
 
-        Vector3[] vertices = new Vector3[(chunkWidth + 1) * (chunkHeight + 1)];
+        // Generate Vertices Array
+        Vector3[] vertices = new Vector3[((chunkWidth / division) + 1) * ((chunkHeight / division) + 1)];
 
+        // Iterate Through the Grid Points
         int i = 0;
         for (int x = 0; x <= chunkWidth / division; x++)
         {
@@ -113,9 +115,41 @@ public class TerrainChunk
             for (int y = 0; y <= chunkHeight / division; y++)
             {
 
+                // Set the Vertices Equal to their Positions
                 vertices[i] = new Vector3(x * division, GetTerrainHeight(x * division, y * division), y * division);
 
             }
+
+        }
+
+        // Initialize Triangles/ Indices Array
+        int[] triangles = new int[(chunkWidth / division) * (chunkHeight / division) * 6];
+
+        // Iterate Through the Grid Points
+        int vert = 0;
+        int tris = 0;
+        for (int y = 0; y < chunkHeight / division; y++)
+        {
+
+            for (int x = 0; x < chunkWidth / division; x++)
+            {
+
+                // Create Two Triangles
+                triangles[tris + 0] = vert + 0;
+                triangles[tris + 1] = vert + (chunkWidth / division) + 1;
+                triangles[tris + 2] = vert + 1;
+                triangles[tris + 3] = vert + 1;
+                triangles[tris + 4] = vert + (chunkWidth / division) + 1;
+                triangles[tris + 5] = vert + (chunkWidth / division) + 2;
+
+                // Iterate the Other Variables
+                vert++;
+                tris += 6;
+
+            }
+
+            // Prevent Back Faces Generated at Bottom
+            vert++;
 
         }
 
