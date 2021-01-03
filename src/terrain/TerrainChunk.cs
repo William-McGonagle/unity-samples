@@ -96,16 +96,26 @@ public class TerrainChunk
     
     }
 
+    /// <summary>
+    /// Generate the Unity Mesh Data for the terrain chunk.
+    /// </summary>
+    /// <returns>A Unity Mesh from the terrain data.</returns>
     public Mesh GenerateTerrainMesh() {
 
         return GenerateTerrainMesh(1);
     
     }
 
+    /// <summary>
+    /// Generate the Unity Mesh Data for the terrain chunk with control over resolution.
+    /// </summary>
+    /// <param name="division">The division factor on the terrain. Ex: 2 will divide the Terrain's resolution by 2.</param>
+    /// <returns>A Unity Mesh from the terrain data.</returns>
     public Mesh GenerateTerrainMesh(int division) {
 
         // Generate Vertices Array
         Vector3[] vertices = new Vector3[((chunkWidth / division) + 1) * ((chunkHeight / division) + 1)];
+        Vector2[] uvs = new Vector2[vertices.Length];
 
         // Iterate Through the Grid Points
         int i = 0;
@@ -115,8 +125,10 @@ public class TerrainChunk
             for (int y = 0; y <= chunkHeight / division; y++)
             {
 
-                // Set the Vertices Equal to their Positions
+                // Set the Vertices and UVS Equal to their Positions
+                uvs[i] = new Vector2((float)(x / (chunkWidth / division)), (float)(y / (chunkHeight / division)));
                 vertices[i] = new Vector3(x * division, GetTerrainHeight(x * division, y * division), y * division);
+                i++;
 
             }
 
@@ -152,8 +164,22 @@ public class TerrainChunk
             vert++;
 
         }
+        
+        // Create a new Unity Mesh
+        Mesh output = new Mesh();
 
-        return new Mesh();
+        // Set the Mesh data to the values that were generated
+        output.vertices = vertices;
+        output.triangles = triangles;
+        output.uv = uvs;
+
+        // Run Functions to Clean up the Mesh
+        output.RecalculateTangents();
+        output.RecalculateNormals();
+        output.RecalculateBounds();
+
+        // Return the Generated Mesh
+        return output;
 
     }
     
