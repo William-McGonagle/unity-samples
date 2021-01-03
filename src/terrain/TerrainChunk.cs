@@ -17,7 +17,7 @@ public class TerrainChunk
     /// </summary>
     /// <param name="xPos">The x-position of the terrain that you are trying to sample.</param>
     /// <param name="yPos">The y-position of the terrain that you are trying to sample.</param>
-    /// <returns></returns>
+    /// <returns>The height of the terrain specified by the point in the parameters.</returns>
     public float GetTerrainHeight(float xPos, float yPos)
     {
 
@@ -41,6 +41,29 @@ public class TerrainChunk
 
         // Return the Fully Interpolated Output
         return Mathf.Lerp(interpAmountY, xInterp0, xInterp1);
+
+    }
+
+    /// <summary>
+    /// Get the slope between two points on the terrain. 
+    /// </summary>
+    /// <param name="xPos0">The x-position of the first point on the terrain.</param>
+    /// <param name="yPos0">The y-position of the first point on the terrain.</param>
+    /// <param name="xPos1">The x-position of the second point on the terrain.</param>
+    /// <param name="yPos1">The y-position of the second point on the terrain.</param>
+    /// <returns>The slope between the two points provided in the parameters.</returns>
+    public float GetTerrainSlope(float xPos0, float yPos0, float xPos1, float yPos1) {
+
+        // Get the Two Heights
+        float height0 = GetTerrainHeight(xPos0, yPos0);
+        float height1 = GetTerrainHeight(xPos1, yPos1);
+
+        // Get the Height Difference and Position Difference
+        float heightDelta = height0 - height1;
+        float posDelta = Vector2.Distance(new Vector2(xPos0, yPos0), new Vector2(xPos1, yPos1));
+
+        // Slope is Rise over Run
+        return heightDelta / posDelta;
 
     }
     
