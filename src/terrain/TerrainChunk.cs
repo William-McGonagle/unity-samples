@@ -6,8 +6,8 @@ public class TerrainChunk
 {
 
     // Chunk Sizes
-    public static int chunkWidth = 128;
-    public static int chunkHeight = 128;
+    public static int chunkWidth = 32;
+    public static int chunkHeight = 32;
 
     // Chunk Data
     public float[,] chunkData;
@@ -34,11 +34,15 @@ public class TerrainChunk
         int xRealPos = (int)Mathf.Floor(xPos);
         int yRealPos = (int)Mathf.Floor(yPos);
 
+        // Guard-rails Built to Stop Out of Range Exceptions
+        if (xRealPos < 0 || xRealPos + 1 >= chunkWidth)  return 0;
+        if (yRealPos < 0 || yRealPos + 1 >= chunkHeight) return 0;
+
         // Get the Four Terrain Heights
         float x0y0 = chunkData[xRealPos + 0, yRealPos + 0];
-        float x1y0 = chunkData[xRealPos + 0, yRealPos + 0];
-        float x0y1 = chunkData[xRealPos + 0, yRealPos + 0];
-        float x1y1 = chunkData[xRealPos + 0, yRealPos + 0];
+        float x1y0 = chunkData[xRealPos + 1, yRealPos + 0];
+        float x0y1 = chunkData[xRealPos + 0, yRealPos + 1];
+        float x1y1 = chunkData[xRealPos + 1, yRealPos + 1];
 
         // Get the Percentage of Where the Point lies Realtive to the Grid Points
         float interpAmountX = Mathf.InverseLerp(xRealPos, xRealPos + 1, xPos);
@@ -157,11 +161,11 @@ public class TerrainChunk
 
                 // Create Two Triangles
                 triangles[tris + 0] = vert + 0;
-                triangles[tris + 1] = vert + (chunkWidth / division) + 1;
-                triangles[tris + 2] = vert + 1;
+                triangles[tris + 1] = vert + 1;
+                triangles[tris + 2] = vert + (chunkWidth / division) + 1;
                 triangles[tris + 3] = vert + 1;
-                triangles[tris + 4] = vert + (chunkWidth / division) + 1;
-                triangles[tris + 5] = vert + (chunkWidth / division) + 2;
+                triangles[tris + 4] = vert + (chunkWidth / division) + 2;
+                triangles[tris + 5] = vert + (chunkWidth / division) + 1;
 
                 // Iterate the Other Variables
                 vert++;
