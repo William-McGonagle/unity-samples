@@ -12,7 +12,7 @@ These modules are all built to be as high profile and flexible as possible. All 
 - Curves
   - [Curve System](/src/bezier/)
 - Parsers
-  - [Config File Parser](/src/bezier/)
+  - [Config File Parser](/src/parser/)
 
 ## Who is Using These Scripts?
 At the moment, no one has added their game to the list. 
