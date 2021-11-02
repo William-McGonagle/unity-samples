@@ -11,6 +11,8 @@ These modules are all built to be as high profile and flexible as possible. All 
   - [Rectangular Prism Generation](/src/shape/)
 - Curves
   - [Curve System](/src/bezier/)
+- Parsers
+  - [Config File Parser](/src/bezier/)
 
 ## Who is Using These Scripts?
 At the moment, no one has added their game to the list. 
