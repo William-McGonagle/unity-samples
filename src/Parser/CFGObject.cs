@@ -19,7 +19,7 @@ class CFGObject
         {
 
             if (line.Length <= 0) continue;
-            if (line.Trim().StartsWith('#')) continue;
+            if (line.Trim().StartsWith("#")) continue;
 
             string lineKey = "";
             string lineValue = "";
@@ -41,14 +41,33 @@ class CFGObject
 
                         }
 
+                        if (line[i] == '#')
+                        {
+
+                            state = 2;
+                            break;
+
+                        }
+
                         lineKey += line[i];
 
                         break;
 
                     case 1:
 
+                        if (line[i] == '#')
+                        {
+
+                            state = 2;
+                            break;
+
+                        }
+
                         lineValue += line[i];
 
+                        break;
+
+                    case 2:
                         break;
 
                 }
@@ -73,9 +92,17 @@ class CFGObject
 
                 case "Int32":
 
-                    int numValue;
-                    Int32.TryParse(cleanedValue, out numValue);
-                    info.SetValue(this, numValue);
+                    int numValueInt;
+                    Int32.TryParse(cleanedValue, out numValueInt);
+                    info.SetValue(this, numValueInt);
+
+                    break;
+
+                case "Single":
+
+                    float numValueSingle;
+                    Single.TryParse(cleanedValue, out numValueSingle);
+                    info.SetValue(this, numValueSingle);
 
                     break;
 
@@ -182,6 +209,11 @@ class CFGObject
                 case "Boolean":
 
                     output.Append(((bool)pair.Value) ? "Yes" : "No");
+
+                    break;
+                case "Single":
+
+                    output.Append(pair.Value);
 
                     break;
                 default:
