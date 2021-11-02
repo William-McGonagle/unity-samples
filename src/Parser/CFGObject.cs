@@ -18,6 +18,9 @@ class CFGObject
         foreach (string line in File.ReadLines(path))
         {
 
+            if (line.Length <= 0) continue;
+            if (line.Trim().StartsWith('#')) continue;
+
             string lineKey = "";
             string lineValue = "";
             int state = 0;
