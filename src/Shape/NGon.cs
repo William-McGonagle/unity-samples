@@ -44,21 +44,23 @@ public class NGon
     public static Mesh Generate(int n)
     {
 
-        return Generate(1, 1, 1);
+        return Generate(n, 1, 1);
 
     }
 
-    public static Mesh Generate(int n, float size)
+    public static Mesh Generate(int n, float radius)
     {
 
-
+        // TODO: @William-McGonagle - Implement Mesh Generation
+        return null;
 
     }
 
     public static Mesh Generate(int n, float width, float height)
     {
 
-
+        // TODO: @William-McGonagle - Implement Mesh Generation
+        return null;
 
     }
 

@@ -13,6 +13,7 @@ These modules are all built to be as high profile and flexible as possible. All 
 - Shape Generation
   - [Rectangular Prism Generation](/src/Shape/#rectangular-prism)
   - [Square Generation](/src/Shape/#square)
+  - [N-Gon Generation](/src/Shape/#n-gon)
 - Curves
   - [Curve System](/src/bezier/)
 - Parsers
