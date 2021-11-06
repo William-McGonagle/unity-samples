@@ -12,6 +12,7 @@ These modules are all built to be as high profile and flexible as possible. All 
   - [Heightmap-Based Terrain](/src/terrain/)
 - Shape Generation
   - [Rectangular Prism Generation](/src/shape/)
+  - [Square Generation](/src/shape/)
 - Curves
   - [Curve System](/src/bezier/)
 - Parsers
