@@ -3,10 +3,12 @@ using System;
 public class Note
 {
 
-    #region Local
-
     public string value = "E4";
 
+    /// <summary>
+    /// Gets the name of the current note.
+    /// </summary>
+    /// <returns>A string-type containing the name of the note.</returns>
     public string GetNoteName()
     {
 
@@ -14,6 +16,10 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the full note value.
+    /// </summary>
+    /// <returns>An integer-type containing the current note's value.</returns>
     public int GetFullNote()
     {
 
@@ -21,6 +27,10 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the octave value of the note.
+    /// </summary>
+    /// <returns>An integer-type containing the current note's octave.</returns>
     public int GetOctave()
     {
 
@@ -28,6 +38,10 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the frequency of the note.
+    /// </summary>
+    /// <returns>A float-type containing the current note's frequency.</returns>
     public float GetFrequency()
     {
 
@@ -35,6 +49,10 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the current note's value in the octave.
+    /// </summary>
+    /// <returns>An integer-type containing the current note's value in the octave.</returns>
     public float GetNote()
     {
 
@@ -42,10 +60,9 @@ public class Note
 
     }
 
-    #endregion
-
-    #region Constructors
-
+    /// <summary>
+    /// Constructs a default note.
+    /// </summary>
     public Note()
     {
 
@@ -53,6 +70,10 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Constructs a note with a input value.
+    /// </summary>
+    /// <param name="_value">The value notation of the note.</param>
     public Note(string _value)
     {
 
@@ -60,12 +81,16 @@ public class Note
 
     }
 
-    #endregion
+    /// <summary>
+    /// Frequency of A4 used to tune all the other notes.
+    /// </summary>
+    public static float tuneFrequency = 440.00f;
 
-    #region Static 
-
-    public static float tuneFrequency = 440.00f; // Frequency of A4
-
+    /// <summary>
+    /// Gets the name of the inputted note.
+    /// </summary>
+    /// <param name="input">The value notation of the note.</param>
+    /// <returns>A string-type containing the name of the note.</returns>
     public static string GetNoteName(string input)
     {
 
@@ -95,6 +120,11 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the value of the inputted note in the octave.
+    /// </summary>
+    /// <param name="input">The value notation of the note.</param>
+    /// <returns>An integer-type containing the current note's value in the octave.</returns>
     public static int GetNote(string input)
     {
 
@@ -127,6 +157,11 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the octave of the inputted note.
+    /// </summary>
+    /// <param name="input">The value notation of the note.</param>
+    /// <returns>An integer-type containing the current note's octave.</returns>
     public static int GetOctave(string input)
     {
 
@@ -143,6 +178,11 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the full value of the inputted note.
+    /// </summary>
+    /// <param name="input">The value notation of the note.</param>
+    /// <returns>An integer-type containing the current note's value.</returns>
     public static int GetFullNote(string input)
     {
 
@@ -151,74 +191,21 @@ public class Note
 
     }
 
+    /// <summary>
+    /// Gets the frequency of the inputted note.
+    /// </summary>
+    /// <param name="input">The value notation of the note.</param>
+    /// <returns>A float-type containing the current note's frequency.</returns>
     public static float GetFrequency(string input)
     {
 
         // Get Value of A4 vs Current Note
         int inputValue = GetFullNote(input);
-        int distance = inputValue - 57; // 48 = A4
+        int distance = inputValue - 57; // 57 = A4
 
         // Return the Frequency
         return tuneFrequency * (float)Math.Pow(2, distance / 12.0);
 
     }
-
-    private static int[] GetFactors(int num)
-    {
-
-        // TODO: OPTIMIZE
-        if (num <= 0) return new int[0];
-        if (num == 1) return new int[1] { 1 };
-        if (num == 2) return new int[2] { 0, 1 };
-
-        int[] output = new int[num];
-        int remaining = num;
-        int divisor = 2;
-
-        while (remaining > 1)
-        {
-            if (remaining % divisor == 0)
-            {
-
-                remaining /= divisor;
-                output[divisor]++;
-
-            }
-            else
-            {
-
-                divisor++;
-
-            }
-        }
-
-        return output;
-
-    }
-
-    public static int GetConsonance(Note a, Note b)
-    {
-
-        // First Rule
-        if (a.GetNote() == b.GetNote()) return Math.Abs(a.GetOctave() - b.GetOctave()) + 1;
-
-
-
-        // General Rule
-        int[] factors = GetFactors(a.GetFullNote());
-        int outputSum = 0;
-
-        for (int i = 2; i < factors.Length; i++)
-        {
-
-            outputSum += (i - 1) * factors[i];
-
-        }
-
-        return outputSum;
-
-    }
-
-    #endregion
 
 }
