@@ -1,6 +1,6 @@
 # Unity Samples
 
-## By William McGonagle
+
 
 A bunch of Unity Samples that allow jumpstarting of projects. These are all written in C# and are built to be independent of other modules. Since they are licensed under the MIT license, you can use them in any project that you would like. If you do this, please drop a pull request adding your game's name to this section of the README.md.
 
