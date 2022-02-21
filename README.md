@@ -4,6 +4,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/william-mcgonagle/unity-samples)
 ![GitHub](https://img.shields.io/github/license/william-mcgonagle/unity-samples)
 ![GitHub repo size](https://img.shields.io/github/repo-size/william-mcgonagle/unity-samples)
+![GitHub top language](https://img.shields.io/github/languages/top/william-mcgonagle/unity-samples)
 
 A bunch of Unity Samples that allow jumpstarting of projects. These are all written in C# and are built to be independent of other modules. Since they are licensed under the MIT license, you can use them in any project that you would like. If you do this, please drop a pull request adding your game's name to this section of the README.md.
 
