@@ -1,12 +1,12 @@
-﻿# Patterns
+# Patterns
 
-##Singleton Pattern
+## Singleton Pattern
 
 Singletons are used whenever you want one, and only one, of an object in memory at a time.
 
 See: https://en.wikipedia.org/wiki/Singleton_patten
 
-###Examples
+### Examples
 
 ```c#
 public class Example : Singleton<Example> 
