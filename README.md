@@ -23,6 +23,8 @@ These modules are all built to be as high profile and flexible as possible. All 
   - [Curve System](/src/bezier/)
 - Parsers
   - [Config File Parser](/src/Parser/)
+- Patterns
+  - [Singleton Pattern](/src/Patterns/Singleton)
 - Synth
   - [Notes](/src/Synth/)
 
