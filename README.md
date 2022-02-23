@@ -24,7 +24,7 @@ These modules are all built to be as high profile and flexible as possible. All 
 - Parsers
   - [Config File Parser](/src/Parser/)
 - Patterns
-  - [Singleton Pattern](/src/Patterns/Singleton)
+  - [Singleton Pattern](/src/Patterns/)
 - Synth
   - [Notes](/src/Synth/)
 
