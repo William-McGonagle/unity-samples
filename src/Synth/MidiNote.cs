@@ -1,1 +1,6 @@
+public class MidiNote
+{
 
+
+
+}
