@@ -27,6 +27,8 @@ These modules are all built to be as high profile and flexible as possible. All 
   - [Singleton Pattern](/src/Patterns/)
 - Synth
   - [Notes](/src/Synth/)
+- Procedural
+  - [Color Palette](/src/Procedural/#color-palette)
 
 ## Who is Using These Scripts?
 
