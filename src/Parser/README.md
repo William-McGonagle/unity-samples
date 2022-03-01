@@ -31,3 +31,30 @@ Gamemode deathmatch = new Gamemode("./deathmatch.cfg");
 deathmath.Save("./deathmatch.cfg");
 
 ```
+
+## CSV File Parser
+
+### Example
+
+```c#
+
+class Item : CSVObject
+{
+
+    public string itemName;
+    public int itemCost;
+    public bool isValuable;
+
+    public Item() { }
+
+}
+
+```
+```c#
+// Read and Create CSV File
+Item[] items = Item.Load("./path/to/items.csv");
+
+// Save CSV File
+items.Save("./path/to/items.csv");
+
+```
