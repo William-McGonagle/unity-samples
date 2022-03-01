@@ -34,6 +34,9 @@ deathmath.Save("./deathmatch.cfg");
 
 ## CSV File Parser
 
+- [ ] CSV Logic not fully implemented
+- [ ] Add Documentation
+
 ### Example
 
 ```c#
